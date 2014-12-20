@@ -1,6 +1,14 @@
 set nocompatible              " be iMproved
 filetype off                  " required!
 
+" basic setting
+syntax enable
+set background=dark
+
+" Solarized Colorscheme
+colorscheme desert
+
+
 " Easy navigation
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
@@ -85,13 +93,6 @@ filetype plugin indent on     " required!
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Bundle commands are not allowed.
 
-" basic setting
-syntax enable
-set background=dark
-
-" Solarized Colorscheme
-colorscheme desert
-
 
 set number
 set spell
@@ -127,10 +128,7 @@ let g:Tex_ViewRule_pdf =  'okular'
 
 " syntax spell [toplevel | notoplevel | default]
 " syntax spell notoplevel
-
 autocmd BufRead,BufNewFile *.m syntax spell notoplevel
-" hi SpellBad    ctermfg=115 ctermbg=000   cterm=underline  guifg=#FFFFFF   guibg=#000000   gui=none
-hi SpellBad cterm=underline
 
 
 " Force swap file directory to be the following
@@ -214,6 +212,15 @@ set viminfo='20,\"500   " remember copy registers after quitting in the .viminfo
 set hidden              " remember undo after quitting
 set history=50          " keep 50 lines of command history
 " set mouse=v             " use mouse in visual mode (not normal,insert,command,help mode
+
+if $COLORTERM == 'gnome-terminal'
+    set t_Co=256
+endif
+
+
+" hi SpellBad    ctermfg=115 ctermbg=000   cterm=underline  guifg=#FFFFFF   guibg=#000000   gui=none
+hi clear SpellBad
+hi SpellBad cterm=underline,bold ctermfg=white ctermbg=black
 
 
 " color settings (if terminal/gui supports it)
