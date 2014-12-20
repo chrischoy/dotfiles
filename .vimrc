@@ -1,6 +1,13 @@
 set nocompatible              " be iMproved
 filetype off                  " required!
 
+" Easy navigation
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+
+
 " Add mouse interaction
 set mouse=a
 
@@ -57,7 +64,7 @@ autocmd vimenter * NERDTree
 autocmd vimenter * wincmd l
 
 " Vim TMUX integration
-Plugin 'benmills/vimux'
+Plugin 'christoomey/vim-tmux-navigator'
 
 " Airline
 Plugin 'bling/vim-airline'
