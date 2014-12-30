@@ -67,7 +67,7 @@ export CAFFE_ROOT=/home/chrischoy/package/Caffe/
 export COLLADA_DIR=/usr/local/include/colladadom 
 
 #PS1='[\u@\h \W]\$ '  # Default
-PS1='\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\]'
+PS1='\[\e[0;32m\]\u\[\e[m\] \[\e[0;34m\]\w\[\e[m\] \[\e[0;32m\]\$\[\e[m\] \[\e[0;17m\]'
 
 # Colorize the prompt
 export CLICOLOR=1

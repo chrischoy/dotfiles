@@ -6,7 +6,7 @@ syntax enable
 set background=dark
 
 " Solarized Colorscheme
-colorscheme desert
+colorscheme evening
 
 
 " Easy navigation
@@ -33,6 +33,11 @@ Bundle 'gmarik/vundle'
 "
 " original repos on GitHub
 Bundle 'Lokaltog/vim-easymotion'
+" hi EasyMotionTarget ctermbg=none ctermfg=green
+hi EasyMotionShade  ctermbg=none ctermfg=darkgreen
+
+
+
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'tpope/vim-rails.git'
 Bundle 'lazywei/vim-matlab'
@@ -48,9 +53,9 @@ Bundle 'FuzzyFinder'
 
 " non-GitHub repos
 Bundle 'git://git.wincent.com/command-t.git'
-" Git repos on your local machine (i.e. when working on your own plugin)
-" Bundle 'Valloric/YouCompleteMe'
 
+" Git repos on your local machine (i.e. when working on your own plugin)
+Bundle 'Valloric/YouCompleteMe'
 
 " Solarized Color Scheme"
 Bundle 'altercation/vim-colors-solarized'
@@ -58,6 +63,17 @@ Bundle 'altercation/vim-colors-solarized'
 " Tagbar
 Plugin 'majutsushi/tagbar'
 nmap <F8> :TagbarToggle<CR>
+
+" Python Autocomplete
+Plugin 'davidhalter/jedi-vim'
+Plugin 'ervandew/supertab' " Supertab plugin for jedi-vim
+
+
+" filetype plugin on
+" set omnifunc=syntaxcomplete#Complete
+
+"let g:jedi#use_tabs_not_buffers = 0
+"let g:jedi#use_splits_not_buffers = "right"
 
 
 " NerdTree
@@ -68,16 +84,21 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " Toggle NerdTree
 map <C-n> :NERDTreeToggle<CR>
 " Open NerdTree on start up
-autocmd vimenter * NERDTree
-autocmd vimenter * wincmd l
+" autocmd vimenter * NERDTree
+" autocmd vimenter * wincmd l
 
 " Vim TMUX integration
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'edkolev/tmuxline.vim'
+
+" Auto Syntax checker
+Plugin 'scrooloose/syntastic'
 
 " Airline
 Plugin 'bling/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+let g:airline_theme = 'molokai'
 " set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h11
 
 " ...
@@ -115,7 +136,7 @@ autocmd BufEnter *.m    compiler mlint
 augroup CursorLine
     au!
     au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-    au WinLeave * setlocal nocursorline
+    au VimLeave,WinLeave,BufWinLeave * setlocal nocursorline
 augroup END
 
 
@@ -220,8 +241,13 @@ endif
 
 " hi SpellBad    ctermfg=115 ctermbg=000   cterm=underline  guifg=#FFFFFF   guibg=#000000   gui=none
 hi clear SpellBad
-hi SpellBad cterm=underline,bold ctermfg=white ctermbg=black
-
+hi SpellBad term=standout ctermfg=1 term=underline cterm=underline
+hi clear SpellCap
+hi SpellCap term=underline cterm=underline
+hi clear SpellRare
+hi SpellRare term=underline cterm=underline
+hi clear SpellLocal
+hi SpellLocal term=underline cterm=underline   
 
 " color settings (if terminal/gui supports it)
 if &t_Co > 2 || has("gui_running")
@@ -230,13 +256,27 @@ if &t_Co > 2 || has("gui_running")
   set incsearch      " search incremently (search while typing)
 endif
 
+if version >= 700
+  "Pmenu
+  hi Pmenu                          guibg=gray
+  hi Pmenu                          ctermbg=gray
+  hi PmenuSel   guifg=white         guibg=black
+  hi PmenuSel   ctermfg=white       ctermbg=black
+  hi PmenuSbar                      guibg=gray
+  hi PmenuSbar                      ctermbg=gray
+endif
+
+" hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+" hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+hi CursorLine   cterm=NONE ctermbg=darkred guibg=darkred 
+hi CursorColumn cterm=NONE ctermbg=darkred guibg=darkred 
+
 " paste mode toggle (needed when using autoindent/smartindent)
 map <F10> :set paste<CR>
 map <F11> :set nopaste<CR>
 imap <F10> <C-O>:set paste<CR>
 imap <F11> <nop>
 set pastetoggle=<F11>
-set paste
 
 " Use of the filetype plugins, auto completion and indentation support
 filetype plugin indent on
