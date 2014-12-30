@@ -1,5 +1,5 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Common Custom Vim Setting
+" Custom Vim Setting
 " 
 " Author : Christopher B. Choy
 " Email  : chrischoy208 gmail com
