@@ -1,3 +1,4 @@
+# Only for my lab machine
 export LD_LIBRARY_PATH=/usr/local/lib
 export CUDA_HOME=/usr/local/cuda-6.0
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${CUDA_HOME}/lib64
