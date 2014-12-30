@@ -7,8 +7,6 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Basic Setting
 filetype on                  " try to detect filetypes
@@ -30,7 +28,7 @@ endif
 "
 " set the runtime path to include Vundle and initialize
 " set rtp+=~/.vim/bundle/Vundle.vim
-set rtp+=~/.vim/bundle/vundle
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -139,14 +137,20 @@ let g:Tex_ViewRule_pdf =  'okular'
 
 """"""""""""""""""""""""""""""""""""
 " Vim TMUX integration
-Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'chrischoy/vim-tmux-navigator'
 Plugin 'edkolev/tmuxline.vim'
+let g:tmux_navigator_cursorline = 1
 " For OSX vim, tmux resize using <C-arrowkeys> does not work.
 " Follow the following answer to fix. Also, disable system default
 " <C-arrowkey> mapping
 " http://superuser.com/questions/660013/resizing-pane-is-not-working-for-tmux-on-mac
 """"""""""""""""""""""""""""""""""""
 
+""""""""""""""""""""""""""""""""""""
+" Restore FocusLost function in tmux
+Plugin 'sjl/vitality.vim'
+let g:vitality_always_assume_iterm = 1
+""""""""""""""""""""""""""""""""""""
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -274,8 +278,8 @@ hi CursorColumn cterm=NONE ctermbg=darkred guibg=darkred
 " hlight current line current window only
 augroup CursorLine
     au!
-    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-    au VimLeave,WinLeave,BufWinLeave * setlocal nocursorline
+    au VimEnter,WinEnter,BufWinEnter,TabEnter,FocusGained,CmdwinEnter * setlocal cursorline
+    au WinLeave,TabLeave,FocusLost,CmdwinLeave * setlocal nocursorline
 augroup END
 """"""""""""""""""""""""""""""""""""
 
