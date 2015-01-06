@@ -1,0 +1,34 @@
+" Mapping
+" 
+" Easy navigation
+set wrap
+" "nmap <silent> <C-J> :TmuxNavigateDown<cr>
+" "vmap <silent> <C-J> :TmuxNavigateDown<cr>
+" "imap <silent> <C-J> :TmuxNavigateDown<cr>
+""nnoremap <silent> <C-J> :TmuxNavigateDown<cr>
+" imap <c-j> :TmuxNavigateDown<cr>
+" imap <c-k> :TmuxNavigateUp<cr>
+
+
+
+""""""""""""""""""""""""""""""""""""
+" Cursor line highlight
+" hi CursorLine   cterm=NONE ctermbg=gray ctermfg=white guibg=gray guifg=white
+" hi CursorColumn cterm=NONE ctermbg=gray ctermfg=white guibg=gray guifg=white
+" "hi CursorLine   cterm=NONE ctermbg=gray guibg=gray 
+" "hi CursorColumn cterm=NONE ctermbg=gray guibg=gray 
+" hlight current line current window only
+augroup CursorLine
+    au!
+    au VimEnter,WinEnter,BufWinEnter,TabEnter,FocusGained,CmdwinEnter * setlocal cursorline
+    au WinLeave,TabLeave,FocusLost,CmdwinLeave * setlocal nocursorline
+augroup END
+""""""""""""""""""""""""""""""""""""
+" hi CursorLine   cterm=NONE ctermbg=red ctermfg=white guibg=gray guifg=white
+
+set mouse+=a
+if &term =~ '^screen'
+    " tmux knows the extended mouse mode
+    set ttymouse=xterm2
+endif
+
