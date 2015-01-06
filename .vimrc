@@ -1,1 +1,1 @@
-/Users/chrischoy/.spf13-vim-3/.vimrc
+/afs/cs.stanford.edu/u/chrischoy/.spf13-vim-3/.vimrc
