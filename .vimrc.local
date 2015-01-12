@@ -13,10 +13,10 @@ set wrap
 
 """"""""""""""""""""""""""""""""""""
 " Cursor line highlight
-" hi CursorLine   cterm=NONE ctermbg=gray ctermfg=white guibg=gray guifg=white
+" hi CursorLine   cterm=NONE ctermbg=lightgray ctermfg=white guibg=lightgray guifg=white
 " hi CursorColumn cterm=NONE ctermbg=gray ctermfg=white guibg=gray guifg=white
-" "hi CursorLine   cterm=NONE ctermbg=gray guibg=gray 
-" "hi CursorColumn cterm=NONE ctermbg=gray guibg=gray 
+" "hi CursorLine   cterm=NONE ctermbg=red guibg=red 
+" "hi CursorColumn cterm=NONE ctermbg=darkgray guibg=darkgray 
 " hlight current line current window only
 augroup CursorLine
     au!
@@ -32,3 +32,15 @@ if &term =~ '^screen'
     set ttymouse=xterm2
 endif
 
+" colorscheme industry
+" let g:airline_theme='molokai'
+
+"Pmenu
+hi Pmenu                          guibg=white
+hi Pmenu                          ctermbg=white
+" "hi PmenuSel   guifg=white         guibg=black
+" "hi PmenuSel   ctermfg=white       ctermbg=black
+" "hi PmenuSbar                      guibg=gray
+" "hi PmenuSbar                      ctermbg=gray
+
+hi Visual guibg=darkblue ctermbg=darkblue
