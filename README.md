@@ -19,3 +19,7 @@ Tmux configuration that is optimized for vim experience
 
 TODO: Cleanup
 
+
+## Remove key mapping for <C-J> in ~/.vim/bundle/vim-latex/plugin/imaps.vim
+
+find <C-J> mappings and comment all out
