@@ -67,8 +67,10 @@ export CAFFE_ROOT=/home/chrischoy/package/Caffe/
 # COLLADA_DIR 
 export COLLADA_DIR=/usr/local/include/colladadom 
 
-#PS1='[\u@\h \W]\$ '  # Default
-PS1='\[\e[0;32m\]\u\[\e[m\] \[\e[0;34m\]\w\[\e[m\] \[\e[0;32m\]\$\[\e[m\] \[\e[0;17m\]'
+# PS1='[\u@\h \W]\$ '  # Default
+# PS1='\[\e[0;32m\]\u\[\e[m\] \[\e[0;34m\]\w\[\e[m\] \[\e[0;32m\]\$\[\e[m\] \[\e[0;17m\]'
+# Custom bash prompt via kirsle.net/wizards/ps1.html
+export PS1="\[$(tput bold)\]\[$(tput setaf 4)\]\t \[$(tput setaf 2)\][\[$(tput setaf 3)\]\u\[$(tput setaf 1)\]@\[$(tput setaf 3)\]\h \[$(tput setaf 6)\]\W\[$(tput setaf 2)\]]\[$(tput setaf 4)\]\\$ \[$(tput sgr0)\]"
 
 # Colorize the prompt
 export CLICOLOR=1
