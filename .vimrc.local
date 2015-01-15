@@ -32,8 +32,8 @@ if &term =~ '^screen'
     set ttymouse=xterm2
 endif
 
-" colorscheme industry
-" let g:airline_theme='molokai'
+colorscheme industry
+let g:airline_theme='molokai'
 
 "Pmenu
 hi Pmenu                          guibg=white
@@ -44,3 +44,7 @@ hi Pmenu                          ctermbg=white
 " "hi PmenuSbar                      ctermbg=gray
 
 hi Visual guibg=darkblue ctermbg=darkblue
+
+" http://vim.wikia.com/wiki/Insert_current_date_or_time
+nnoremap <F5> "=strftime("%Y-%m-%dT%H:%M:%S%z")<CR>p
+inoremap <F5> <C-R>=strftime("%Y-%m-%dT%H:%M:%S%z")<CR>
