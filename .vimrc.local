@@ -13,10 +13,10 @@ set wrap
 
 """"""""""""""""""""""""""""""""""""
 " Cursor line highlight
-" hi CursorLine   cterm=NONE ctermbg=gray ctermfg=white guibg=gray guifg=white
+" hi CursorLine   cterm=NONE ctermbg=lightgray ctermfg=white guibg=lightgray guifg=white
 " hi CursorColumn cterm=NONE ctermbg=gray ctermfg=white guibg=gray guifg=white
-" "hi CursorLine   cterm=NONE ctermbg=gray guibg=gray 
-" "hi CursorColumn cterm=NONE ctermbg=gray guibg=gray 
+" "hi CursorLine   cterm=NONE ctermbg=red guibg=red 
+" "hi CursorColumn cterm=NONE ctermbg=darkgray guibg=darkgray 
 " hlight current line current window only
 augroup CursorLine
     au!
@@ -36,3 +36,19 @@ endif
 nnoremap <F5> "=strftime("%Y-%m-%dT%H:%M:%S%z")<CR>p
 inoremap <F5> <C-R>=strftime("%Y-%m-%dT%H:%M:%S%z")<CR>
 "
+colorscheme industry
+let g:airline_theme='molokai'
+
+"Pmenu
+hi Pmenu                          guibg=white
+hi Pmenu                          ctermbg=white
+" "hi PmenuSel   guifg=white         guibg=black
+" "hi PmenuSel   ctermfg=white       ctermbg=black
+" "hi PmenuSbar                      guibg=gray
+" "hi PmenuSbar                      ctermbg=gray
+
+hi Visual guibg=darkblue ctermbg=darkblue
+
+" http://vim.wikia.com/wiki/Insert_current_date_or_time
+nnoremap <F5> "=strftime("%Y-%m-%dT%H:%M:%S%z")<CR>p
+inoremap <F5> <C-R>=strftime("%Y-%m-%dT%H:%M:%S%z")<CR>
