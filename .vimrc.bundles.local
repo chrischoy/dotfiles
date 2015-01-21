@@ -36,3 +36,12 @@ let g:Tex_ViewRule_pdf =  'okular'
 """"""""""""""""""""""""""""""""""""
 
 
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Markdown Table of contents
+Bundle 'plasticboy/vim-markdown', {'name': 'plasticboy-vim-markdown'}
+" Configurations
+let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_frontmatter=1
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
