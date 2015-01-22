@@ -69,16 +69,16 @@ export COLLADA_DIR=/usr/local/include/colladadom
 
 # PS1='[\u@\h \W]\$ '  # Default
 # PS1='\[\e[0;32m\]\u\[\e[m\] \[\e[0;34m\]\w\[\e[m\] \[\e[0;32m\]\$\[\e[m\] \[\e[0;17m\]'
-# Custom bash prompt via kirsle.net/wizards/ps1.html
-export PS1="\[$(tput bold)\]\[$(tput setaf 4)\]\t \[$(tput setaf 2)\][\[$(tput setaf 3)\]\u\[$(tput setaf 1)\]@\[$(tput setaf 3)\]\h \[$(tput setaf 6)\]\W\[$(tput setaf 2)\]]\[$(tput setaf 4)\]\\$ \[$(tput sgr0)\]"
 
-# Colorize the prompt
-export CLICOLOR=1
-export LSCOLORS='gxfxcxdxbxegedabagacad'
-alias ls='ls --color'
 # export LS_COLORS='di=36;0:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:'
 
 if [[ $- =~ "i" ]]; then 
+  # Colorize the prompt
+  export CLICOLOR=1
+  export LSCOLORS='gxfxcxdxbxegedabagacad'
+  alias ls='ls --color'
+  # Custom bash prompt via kirsle.net/wizards/ps1.html
+  export PS1="\[$(tput bold)\]\[$(tput setaf 4)\]\t \[$(tput setaf 2)\][\[$(tput setaf 3)\]\u\[$(tput setaf 1)\]@\[$(tput setaf 3)\]\h \[$(tput setaf 6)\]\W\[$(tput setaf 2)\]]\[$(tput setaf 4)\]\\$ \[$(tput sgr0)\]"
   /afs/cs/software/bin/reauth 
   echo "running reauth" 
 fi 
