@@ -1,14 +1,12 @@
 # Only for my lab machine
 export LD_LIBRARY_PATH=/usr/local/lib
-export CUDA_HOME=/usr/local/cuda-6.0
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${CUDA_HOME}/lib64
-# For capri7
 export CUDA_HOME=/usr/local/cuda-6.5
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${CUDA_HOME}/lib64
+export CUDNN_PATH=/home/chrischoy/package/cuDNN/
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${CUDA_HOME}/lib64:${CUDNN_PATH}
+export PATH=/usr/kerberos/sbin:/usr/kerberos/bin:/afs/cs/software/sbin:/afs/cs/software/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # PATH links binary file search
-PATH=${CUDA_HOME}/bin:${PATH}
-export PATH
+export PATH=${CUDA_HOME}/bin:$PATH
 
 # Python autocompletion
 export PYTHONSTARTUP=~/.pythonrc
@@ -17,71 +15,56 @@ export PYTHONSTARTUP=~/.pythonrc
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
-# mpi
-# source /media/mpi_journal/mpi_vision.sh
-# source /media/code/pbr/setup.sh
-
-# mlabwrap
-export matlab='matlab_r2013b'
-export MLABRAW_CMD_STR='matlab -nodesktop -nodisplay -nosplash'
-
-# Source in .bashrc
-
-# Where checked out repo
-#export PBR_PATH="$( cd "$( dirname "$0" )" && pwd )"
-export PBR_PATH=/media/code/pbr
-# export PYTHONPATH=$PBR_PATH:$PBR_PATH/pipeline:$PBR_PATH/utils:$PBR_PATH/scripts/converters:$PBR_PATH/part_detector:$PBR_PATH/inference:$PYTHONPATH
-
-export SCRAPY_SETTINGS_MODULE='trimble_scraper.settings'
-
-# VisualSFM
-export PATH=$PATH:/media/downloads/vsfm/bin
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib:/lib:/media/downloads/vsfm/bin:/usr/local/cuda-5.5/lib64
-
-# OSG w/ Collada
-# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/media/libs/collada-dom/dom/build/linux-1.4
-
-# cgal-bindings
-# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/media/libs/cgal-bindings/build/lib
-# export PYTHONPATH=$PYTHONPATH:/media/libs/cgal-bindings/build/build-python
 
 # OSG and Collada library
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib64
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/colladadom/
 
-# PYTHONPATH to be Anaconda
-export PYTHONPATH=/home/chrischoy/Anaconda
+export LIBRARY_PATH=$LD_LIBRARY_PATH
 
-# Add Caffe implementation to the pythonpath
-export PYTHONPATH=$PYTHONPATH:/home/chrischoy/package/Caffe/python
+# PYTHONPATH to be Anaconda
+export PYTHONPATH=/home/chrischoy/anaconda
 
 # Anaconda Path
-export PATH=/home/chrischoy/anaconda/bin:$PATH
+export PATH=${PYTHONPATH}/bin:$PATH
 
 # Include Anaconda library libhdf5_hl
 # export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/chrischoy/anaconda/lib/
 
 # CAFFE ROOT
-export CAFFE_ROOT=/home/chrischoy/package/Caffe/ 
+export CAFFE_ROOT=/home/chrischoy/package/caffe-3de
+export PYTHONPATH=$PYTHONPATH:${CAFFE_ROOT}/python
 
+# Add CAFFE_ROOT to PATH
+export PATH=${CAFFE_ROOT}/build/tools/:$PATH
 # COLLADA_DIR 
 export COLLADA_DIR=/usr/local/include/colladadom 
 
-# PS1='[\u@\h \W]\$ '  # Default
-# PS1='\[\e[0;32m\]\u\[\e[m\] \[\e[0;34m\]\w\[\e[m\] \[\e[0;32m\]\$\[\e[m\] \[\e[0;17m\]'
+# Find out host name
+HOSTNAME=$(hostname)
 
-# export LS_COLORS='di=36;0:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:'
+if [[ $HOSTNAME == "napoli"* ]]; then
+  export CAFFE_ROOT=/scratch/chrischoy/caffe/
+  export LD_LIBRARY_PATH=/scratch/chrischoy/lib/:$LD_LIBRARY_PATH
+  export PATH=${CAFFE_ROOT}bin/:$PATH
+fi
 
 if [[ $- =~ "i" ]]; then 
+  # Running Reauth if not inside tmux
+  if ! { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
+    /afs/cs/software/bin/reauth 
+    # echo "running reauth" 
+  fi
+  # Exec bash if using an interactive shell.
+  exec /bin/zsh
+
   # Colorize the prompt
   export CLICOLOR=1
   export LSCOLORS='gxfxcxdxbxegedabagacad'
   alias ls='ls --color'
   # Custom bash prompt via kirsle.net/wizards/ps1.html
   export PS1="\[$(tput bold)\]\[$(tput setaf 4)\]\t \[$(tput setaf 2)\][\[$(tput setaf 3)\]\u\[$(tput setaf 1)\]@\[$(tput setaf 3)\]\h \[$(tput setaf 6)\]\W\[$(tput setaf 2)\]]\[$(tput setaf 4)\]\\$ \[$(tput sgr0)\]"
-  /afs/cs/software/bin/reauth 
-  echo "running reauth" 
-fi 
+fi
 
 # Run reauth everytime you make connection 
 # is_reauth_running=0 
@@ -103,5 +86,3 @@ fi
 #         echo "running reauth"
 #     fi
 # fi
-
-

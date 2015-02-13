@@ -23,3 +23,15 @@ TODO: Cleanup
 ## Remove key mapping for <C-J> in ~/.vim/bundle/vim-latex/plugin/imaps.vim
 
 find <C-J> mappings and comment all out
+
+
+## Changed to ZSH
+
+PAM Authentication failure
+
+```
+vi /etc/pam.d/chsh
+```
+and comment out `auth required pam_shell.so`
+
+Doesn’t work, just exec /bin/zsh

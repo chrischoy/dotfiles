@@ -45,3 +45,20 @@ Bundle 'plasticboy/vim-markdown', {'name': 'plasticboy-vim-markdown'}
 let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_frontmatter=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" A.vim
+Bundle 'vim-scripts/a.vim'
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntastic config file
+" Default config file is .syntastic_cpp_config
+" let g:syntastic_cpp_config_file = '.my_config'
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Multiple Cursor
+Plugin 'terryma/vim-multiple-cursors', {'name': 'terrma-vim-multiple-cursors'}
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
