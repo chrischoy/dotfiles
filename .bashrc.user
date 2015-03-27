@@ -40,6 +40,11 @@ export PATH=${CAFFE_ROOT}/build/tools/:$PATH
 # COLLADA_DIR 
 export COLLADA_DIR=/usr/local/include/colladadom 
 
+# Torch
+export PATH=/afs/cs.stanford.edu/u/chrischoy/torch-distro/install/bin:$PATH
+export LD_LIBRARY_PATH=/afs/cs.stanford.edu/u/chrischoy/torch-distro/install/lib:$LD_LIBRARY_PATH
+export DYLD_LIBRARY_PATH=/afs/cs.stanford.edu/u/chrischoy/torch-distro/install/lib:$DYLD_LIBRARY_PATH
+
 # Find out host name
 HOSTNAME=$(hostname)
 
@@ -64,6 +69,7 @@ if [[ $- =~ "i" ]]; then
   alias ls='ls --color'
   # Custom bash prompt via kirsle.net/wizards/ps1.html
   export PS1="\[$(tput bold)\]\[$(tput setaf 4)\]\t \[$(tput setaf 2)\][\[$(tput setaf 3)\]\u\[$(tput setaf 1)\]@\[$(tput setaf 3)\]\h \[$(tput setaf 6)\]\W\[$(tput setaf 2)\]]\[$(tput setaf 4)\]\\$ \[$(tput sgr0)\]"
+
 fi
 
 # Run reauth everytime you make connection 

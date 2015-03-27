@@ -62,3 +62,11 @@ Bundle 'vim-scripts/a.vim'
 " Multiple Cursor
 Plugin 'terryma/vim-multiple-cursors', {'name': 'terrma-vim-multiple-cursors'}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Google calendar
+Plugin 'itchyny/calendar.vim'
+let g:calendar_google_calendar = 1
+let g:calendar_google_task = 1
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

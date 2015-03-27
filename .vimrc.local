@@ -9,7 +9,8 @@ set wrap
 " imap <c-j> :TmuxNavigateDown<cr>
 " imap <c-k> :TmuxNavigateUp<cr>
 
-
+au BufNewFile,BufRead *.cu set filetype=cuda
+au BufNewFile,BufRead *.cuh set filetype=cuda
 
 """"""""""""""""""""""""""""""""""""
 " Cursor line highlight
@@ -37,7 +38,8 @@ nnoremap <F5> "=strftime("%Y-%m-%dT%H:%M:%S%z")<CR>p
 inoremap <F5> <C-R>=strftime("%Y-%m-%dT%H:%M:%S%z")<CR>
 
 " colorscheme rootwater
-colorscheme Tomorrow-Night
+" colorscheme Tomorrow-Night
+colorscheme bubblegum
 let g:airline_theme='tomorrow'
 
 " Line Number
@@ -64,9 +66,20 @@ inoremap <F5> <C-R>=strftime("%Y-%m-%dT%H:%M:%S%z")<CR>
 " Tagbar Toggle 
 nmap <F8> :TagbarToggle<CR>
 
+" set tabstop=2 shiftwidth=2 expandtab
+autocmd FileType * set softtabstop=2 tabstop=2 shiftwidth=2 noexpandtab
+autocmd FileType python set softtabstop=2 tabstop=2 shiftwidth=2 expandtab
 
 " Unbundle
 UnBundle 'kristijanhusak/vim-multiple-cursors'
+
+" Set a colorcolumn
+if exists('+colorcolumn')
+  set colorcolumn=80
+else
+  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+endif
+
 
 " Color name 
 " hi x016_Grey0 ctermfg=16 guifg=#000000 "rgb=0,0,0
