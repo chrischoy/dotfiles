@@ -19,9 +19,10 @@ let g:vitality_always_assume_iterm = 1
 """"""""""""""""""""""""""""""""""""
 " Latex-Box
 Bundle 'LaTeX-Box-Team/LaTeX-Box'
+" let g:LatexBox_latexmk_options = "-pdfps"
 let g:LatexBox_latexmk_options = "-pvc -pdfps"
 let g:LatexBox_latexmk_preview_continuously=1
-" let g:LatexBox_latexmk_async=0
+let g:LatexBox_latexmk_async=1
 """"""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""
@@ -60,7 +61,9 @@ Bundle 'vim-scripts/a.vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Multiple Cursor
-Plugin 'terryma/vim-multiple-cursors', {'name': 'terrma-vim-multiple-cursors'}
+" I replaced kristijanhusak/vim-multiple-cursors with terryma's
+" multiple-cursor
+" Plugin 'terryma/vim-multiple-cursors', {'name': 'terrma-vim-multiple-cursors'}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -69,4 +72,9 @@ Plugin 'terryma/vim-multiple-cursors', {'name': 'terrma-vim-multiple-cursors'}
 Plugin 'itchyny/calendar.vim'
 let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Unimpared plugin : key mappings
+Plugin 'tpope/vim-unimpaired'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

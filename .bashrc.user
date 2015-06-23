@@ -1,12 +1,9 @@
 # Only for my lab machine
 export LD_LIBRARY_PATH=/usr/local/lib
-export CUDA_HOME=/usr/local/cuda-6.5
-export CUDNN_PATH=/home/chrischoy/package/cuDNN/
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${CUDA_HOME}/lib64:${CUDNN_PATH}
+export CUDA_ROOT=/usr/local/cuda-7.0
 export PATH=/usr/kerberos/sbin:/usr/kerberos/bin:/afs/cs/software/sbin:/afs/cs/software/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-
 # PATH links binary file search
-export PATH=${CUDA_HOME}/bin:$PATH
+export PATH=${CUDA_ROOT}/bin:$PATH
 
 # Python autocompletion
 export PYTHONSTARTUP=~/.pythonrc
@@ -20,20 +17,9 @@ fi
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib64
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/colladadom/
 
-export LIBRARY_PATH=$LD_LIBRARY_PATH
-
-# PYTHONPATH to be Anaconda
-export PYTHONPATH=/home/chrischoy/anaconda
-
-# Anaconda Path
-export PATH=${PYTHONPATH}/bin:$PATH
 
 # Include Anaconda library libhdf5_hl
 # export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/chrischoy/anaconda/lib/
-
-# CAFFE ROOT
-export CAFFE_ROOT=/home/chrischoy/package/caffe-3de
-export PYTHONPATH=$PYTHONPATH:${CAFFE_ROOT}/python
 
 # Add CAFFE_ROOT to PATH
 export PATH=${CAFFE_ROOT}/build/tools/:$PATH
@@ -41,18 +27,35 @@ export PATH=${CAFFE_ROOT}/build/tools/:$PATH
 export COLLADA_DIR=/usr/local/include/colladadom 
 
 # Torch
-export PATH=/afs/cs.stanford.edu/u/chrischoy/torch-distro/install/bin:$PATH
-export LD_LIBRARY_PATH=/afs/cs.stanford.edu/u/chrischoy/torch-distro/install/lib:$LD_LIBRARY_PATH
-export DYLD_LIBRARY_PATH=/afs/cs.stanford.edu/u/chrischoy/torch-distro/install/lib:$DYLD_LIBRARY_PATH
+# export PATH=/afs/cs.stanford.edu/u/chrischoy/torch-distro/install/bin:$PATH
+# export LD_LIBRARY_PATH=/afs/cs.stanford.edu/u/chrischoy/torch-distro/install/lib:$LD_LIBRARY_PATH
+# export DYLD_LIBRARY_PATH=/afs/cs.stanford.edu/u/chrischoy/torch-distro/install/lib:$DYLD_LIBRARY_PATH
 
 # Find out host name
 HOSTNAME=$(hostname)
 
+# PYTHONPATH to be Anaconda
+export PYTHONPATH=/home/chrischoy/anaconda/
+export CUDNN_PATH=/home/chrischoy/package/cuDNN2/
+
 if [[ $HOSTNAME == "napoli"* ]]; then
+  export PYTHONPATH=/scratch/chrischoy/anaconda/
+  export CUDNN_PATH=/scratch/chrischoy/cuDNN2/
   export CAFFE_ROOT=/scratch/chrischoy/caffe/
   export LD_LIBRARY_PATH=/scratch/chrischoy/lib/:$LD_LIBRARY_PATH
   export PATH=${CAFFE_ROOT}bin/:$PATH
 fi
+
+# Anaconda Path
+export PATH=${PYTHONPATH}bin:$PATH
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${CUDA_ROOT}/lib64:${CUDNN_PATH}
+
+# CAFFE ROOT
+export CAFFE_ROOT=/home/chrischoy/package/caffe-3de
+# export PYTHONPATH=$PYTHONPATH:${CAFFE_ROOT}/python
+
+export LIBRARY_PATH=$LD_LIBRARY_PATH
+export CPATH=${CUDNN_PATH}
 
 if [[ $- =~ "i" ]]; then 
   # Running Reauth if not inside tmux
