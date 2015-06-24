@@ -14,6 +14,7 @@ Personal configuration files
 Common configuration file for my Macbook and lab machine
 Made using spf13-vim repo
 
+If you want xclipboard support. Follow the [instruction](http://askubuntu.com/questions/172265/how-to-use-a-common-clipboard-for-vim-and-unity).
 
 ## 2 .tmux.conf
 
