@@ -1,3 +1,4 @@
+" Add plugins to &runtimepath
 call plug#begin('~/.local/share/nvim/site/plugged')
 
 " Make sure you use single quotes
@@ -63,16 +64,18 @@ Plug 'scrooloose/nerdcommenter'
 " Surround parantheses, bracket, quotes, tags
 Plug 'tpope/vim-surround'
 
-" Use buffer
-" Plug 'bling/vim-bufferline'
-
 " Align lines nicely
 Plug 'godlygeek/tabular'
+
+" requirement for the easytag
+Plug 'xolox/vim-misc'
+
+" Tag generation
+Plug 'xolox/vim-easytags'
 
 " Realtime collaborative editing
 " Plugin 'floobits/floobits-neovim'
 
-" Add plugins to &runtimepath
 call plug#end()
 
 
@@ -93,8 +96,9 @@ endif
 """""""""""""""""""""""""""""""""""
 " Keymapping
 """""""""""""""""""""""""""""""""""
-map <C-e> :NERDTreeToggle<CR>
 let mapleader=","
+nnoremap <C-e> :NERDTreeToggle<CR>
+nnoremap <Leader>u :UndotreeToggle<cr>
 
 """""""""""""""""""""""""""""""""""
 " Editor setting
@@ -116,27 +120,21 @@ else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
 
-""""""""""""""""""""""""""""""""""""
 " hlight the current line in the current window only
 augroup CursorLine
-    au!
-    au VimEnter,WinEnter,BufWinEnter,TabEnter,FocusGained,CmdwinEnter * setlocal cursorline
-    au WinLeave,TabLeave,FocusLost,CmdwinLeave * setlocal nocursorline
+  au!
+  au VimEnter,WinEnter,BufWinEnter,TabEnter,FocusGained,CmdwinEnter * setlocal cursorline
+  au WinLeave,TabLeave,FocusLost,CmdwinLeave * setlocal nocursorline
 augroup END
-""""""""""""""""""""""""""""""""""""
 
 " https://github.com/neovim/neovim/issues/2093
 set ttimeout
 set ttimeoutlen=0
 
-""""""""""""""""""""""""""""""""""""
 " Undo tree persistent
 set undodir=/tmp/.undodir/
 set undofile
-nnoremap <Leader>u :UndotreeToggle<cr>
 
-""""""""""""""""""""""""""""""""""""
-" Vim-airline
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
