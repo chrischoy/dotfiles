@@ -131,7 +131,7 @@ set ttimeoutlen=0
 
 """"""""""""""""""""""""""""""""""""
 " Undo tree persistent
-set undodir='/tmp/.undodir/'
+set undodir=/tmp/.undodir/
 set undofile
 nnoremap <Leader>u :UndotreeToggle<cr>
 
