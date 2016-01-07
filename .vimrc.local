@@ -42,7 +42,8 @@ inoremap <F5> <C-R>=strftime("%Y-%m-%dT%H:%M:%S%z")<CR>
 " colorscheme bubblegum
 " colorscheme burnttoast256
 " colo hybrid
-colorscheme dark-ruby
+" colorscheme dark-ruby
+colorscheme solarized
 let g:airline_theme='dark'
 
 " Line Number

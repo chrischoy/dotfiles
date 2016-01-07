@@ -1,9 +1,9 @@
 # Only for my lab machine
 export LD_LIBRARY_PATH=/usr/local/lib
-export CUDA_ROOT=/usr/local/cuda-7.0
+export CUDA_HOME=/usr/local/cuda-7.0
 export PATH=/usr/kerberos/sbin:/usr/kerberos/bin:/afs/cs/software/sbin:/afs/cs/software/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 # PATH links binary file search
-export PATH=${CUDA_ROOT}/bin:$PATH
+export PATH=${CUDA_HOME}/bin:$PATH
 
 # Python autocompletion
 export PYTHONSTARTUP=~/.pythonrc
@@ -36,11 +36,12 @@ HOSTNAME=$(hostname)
 
 # PYTHONPATH to be Anaconda
 export PYTHONPATH=/home/chrischoy/anaconda/
-export CUDNN_PATH=/home/chrischoy/package/cuDNN2/
+export PYTHON3PATH=/home/chrischoy/anaconda3/
+export CUDNN_PATH=/home/chrischoy/package/cuDNN/
 
 if [[ $HOSTNAME == "napoli"* ]]; then
   export PYTHONPATH=/scratch/chrischoy/anaconda/
-  export CUDNN_PATH=/scratch/chrischoy/cuDNN2/
+  export CUDNN_PATH=/scratch/chrischoy/cuDNN/
   export CAFFE_ROOT=/scratch/chrischoy/caffe/
   export LD_LIBRARY_PATH=/scratch/chrischoy/lib/:$LD_LIBRARY_PATH
   export PATH=${CAFFE_ROOT}bin/:$PATH
@@ -48,7 +49,9 @@ fi
 
 # Anaconda Path
 export PATH=${PYTHONPATH}bin:$PATH
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${CUDA_ROOT}/lib64:${CUDNN_PATH}
+# export PATH=${PYTHON3PATH}bin:$PATH  # before using python3, remove pythonpath
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${CUDA_HOME}/lib64:${CUDNN_PATH}
 
 # CAFFE ROOT
 export CAFFE_ROOT=/home/chrischoy/package/caffe-3de
