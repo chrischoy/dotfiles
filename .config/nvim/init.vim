@@ -85,6 +85,9 @@ Plug 'edkolev/tmuxline.vim'
 " Latex
 Plug 'vim-latex/vim-latex'
 
+" indentLine
+Plug 'Yggdroot/indentLine'
+
 " Realtime collaborative editing
 " Plugin 'floobits/floobits-neovim'
 
