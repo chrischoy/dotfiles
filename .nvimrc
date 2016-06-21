@@ -1,5 +1,5 @@
 " Add plugins to &runtimepath
-call plug#begin('~/.local/share/nvim/site/plugged')
+call plug#begin()
 
 " Make sure you use single quotes
 Plug 'junegunn/seoul256.vim'
@@ -83,7 +83,7 @@ Plug 'vim-scripts/LanguageTool'
 Plug 'edkolev/tmuxline.vim'
 
 " Latex
-Plug 'vim-latex/vim-latex'
+" Plug 'vim-latex/vim-latex'
 
 " indentLine
 Plug 'Yggdroot/indentLine'
@@ -100,13 +100,6 @@ call plug#end()
 " colorscheme molokai  " very strong font colors
 colorscheme badwolf
 let g:airline_theme='dark'
-
-" Set 80 line limit a colorcolumn
-if exists('+colorcolumn')
-  set colorcolumn=80
-else
-  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-endif
 
 """""""""""""""""""""""""""""""""""
 " Keymapping
@@ -137,9 +130,6 @@ set expandtab
 " Switch buffers in vim without saving to a currently modified file
 set hidden
 
-" colorscheme solarized
-let g:airline_theme='dark'
-
 " Set 80 line limit a colorcolumn
 if exists('+colorcolumn')
   set colorcolumn=80
@@ -167,11 +157,15 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
 " Set python interpreter
-let g:python_host_prog = '/home/chrischoy/anaconda/bin/python2.7'
+" let g:python_host_prog = '/home/chrischoy/anaconda/bin/python2.7'
 
 " vim-latex setting
 let g:tex_flavor='latex'
-let g:Tex_CompileRule_pdf = 'pdflatex --synctex=-1 -src-specials -interaction=nonstopmode -file-line-error-style $*'
+let g:Tex_CompileRule_pdf='pdflatex --synctex=-1 -src-specials -interaction=nonstopmode -file-line-error-style $*'
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_MultipleCompileFormats='pdf'
-let g:Tex_ViewRule_pdf =  'okular'
+let g:Tex_ViewRule_pdf='okular'
+
+" Transparent background
+highlight NonText ctermbg=none
+highlight Normal ctermbg=none
