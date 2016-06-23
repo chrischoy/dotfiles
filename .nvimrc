@@ -91,6 +91,9 @@ Plug 'Yggdroot/indentLine'
 " Realtime collaborative editing
 " Plugin 'floobits/floobits-neovim'
 
+" Vim-easymotion
+Plug 'easymotion/vim-easymotion'
+
 call plug#end()
 
 """""""""""""""""""""""""""""""""""
@@ -105,6 +108,9 @@ let g:airline_theme='dark'
 " Keymapping
 """""""""""""""""""""""""""""""""""
 let mapleader=","
+
+" Nerdtree
+let NERDTreeShowHidden=1
 nnoremap <C-e> :NERDTreeToggle<CR>
 nnoremap <Leader>u :UndotreeToggle<cr>
 " Stupid work around
@@ -169,3 +175,6 @@ let g:Tex_ViewRule_pdf='okular'
 " Transparent background
 highlight NonText ctermbg=none
 highlight Normal ctermbg=none
+
+" Turn on EasyMotion case insensitive feature
+let g:EasyMotion_smartcase = 1
