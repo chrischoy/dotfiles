@@ -163,7 +163,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
 " Set python interpreter
-" let g:python_host_prog = '/home/chrischoy/anaconda/bin/python2.7'
+let g:python_host_prog = '/usr/bin/python'
 
 " vim-latex setting
 let g:tex_flavor='latex'
