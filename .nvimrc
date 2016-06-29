@@ -94,6 +94,9 @@ Plug 'Yggdroot/indentLine'
 " Vim-easymotion
 Plug 'easymotion/vim-easymotion'
 
+" Ack
+Plug 'mileszs/ack.vim'
+
 call plug#end()
 
 """""""""""""""""""""""""""""""""""
@@ -155,8 +158,18 @@ set ttimeout
 set ttimeoutlen=0
 
 " Undo tree persistent
-set undodir=/tmp/.undodir/
-set undofile
+let vimDir = '$HOME/.vim'
+let &runtimepath.=','.vimDir
+
+" Keep undo history across sessions by storing it in a file
+if has('persistent_undo')
+    let myUndoDir = expand(vimDir . '/undodir')
+    " Create dirs
+    call system('mkdir -p ' . vimDir)
+    call system('mkdir -p ' . myUndoDir)
+    let &undodir = myUndoDir
+    set undofile
+endif
 
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
@@ -164,6 +177,9 @@ let g:airline_powerline_fonts = 1
 
 " Set python interpreter
 let g:python_host_prog = '/usr/bin/python'
+
+" Set python3 interpreter
+let g:python3_host_prog = '/usr/bin/python3'
 
 " vim-latex setting
 let g:tex_flavor='latex'
@@ -175,6 +191,31 @@ let g:Tex_ViewRule_pdf='okular'
 " Transparent background
 highlight NonText ctermbg=none
 highlight Normal ctermbg=none
+
+
+"""""""""""""""""""""""""""""""""""
+" Easymotion setting
+"""""""""""""""""""""""""""""""""""
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{char}{label}`
+nmap s <Plug>(easymotion-overwin-f2)
+
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
+
+let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
+
+" Search
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+
+" These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
+" Without these mappings, `n` & `N` works fine. (These mappings just provide
+" different highlight method and have some other features )
+" map  n <Plug>(easymotion-next)
+" map  N <Plug>(easymotion-prev)
 
 " Turn on EasyMotion case insensitive feature
 let g:EasyMotion_smartcase = 1
