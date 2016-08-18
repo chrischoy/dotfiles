@@ -1,6 +1,3 @@
-[user]
-    email = chrischoy@ai.stanford.edu
-    name = Christopher B. Choy
 [push]
     default = simple
 [merge]
