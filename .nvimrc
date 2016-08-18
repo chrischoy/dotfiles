@@ -89,7 +89,7 @@ Plug 'vim-latex/vim-latex'
 Plug 'Yggdroot/indentLine'
 
 " Realtime collaborative editing
-Plugin 'floobits/floobits-neovim'
+Plug 'floobits/floobits-neovim'
 
 " Vim-easymotion
 Plug 'easymotion/vim-easymotion'
