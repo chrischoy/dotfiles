@@ -83,19 +83,22 @@ Plug 'vim-scripts/LanguageTool'
 Plug 'edkolev/tmuxline.vim'
 
 " Latex
-" Plug 'vim-latex/vim-latex'
+Plug 'vim-latex/vim-latex'
 
 " indentLine
 Plug 'Yggdroot/indentLine'
 
 " Realtime collaborative editing
-" Plugin 'floobits/floobits-neovim'
+Plugin 'floobits/floobits-neovim'
 
 " Vim-easymotion
 Plug 'easymotion/vim-easymotion'
 
 " Ack
 Plug 'mileszs/ack.vim'
+
+" Yapf
+Plug 'mindriot101/vim-yapf'
 
 call plug#end()
 
@@ -132,18 +135,19 @@ set listchars=tab:>·,trail:•,extends:>,precedes:<
 set list
 
 " Tab to spaces
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set expandtab
 
 " Switch buffers in vim without saving to a currently modified file
 set hidden
 
-" Set 80 line limit a colorcolumn
+" Set 100 line limit a colorcolumn
 if exists('+colorcolumn')
-  set colorcolumn=80
+  " Mark from 80 to 100 to be the warning zone
+  let &colorcolumn=join(range(81,100),",")
 else
-  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>100.\+', -1)
 endif
 
 " hlight the current line in the current window only
@@ -181,6 +185,14 @@ let g:python_host_prog = '/usr/bin/python'
 " Set python3 interpreter
 let g:python3_host_prog = '/usr/bin/python3'
 
+"""""""""""""""""""""""""""""""""""
+" Pymode setting
+"""""""""""""""""""""""""""""""""""
+" Python 3 syntax check
+" let g:pymode_python = 'python3'
+let g:pymode_lint_ignore = "E501"
+" let g:pymode_lint_sort = ['EE', 'WW', 'CC', 'II']
+
 " vim-latex setting
 let g:tex_flavor='latex'
 let g:Tex_CompileRule_pdf='pdflatex --synctex=-1 -src-specials -interaction=nonstopmode -file-line-error-style $*'
@@ -189,8 +201,8 @@ let g:Tex_MultipleCompileFormats='pdf'
 let g:Tex_ViewRule_pdf='okular'
 
 " Transparent background
-highlight NonText ctermbg=none
-highlight Normal ctermbg=none
+" highlight NonText ctermbg=none
+" highlight Normal ctermbg=none
 
 
 """""""""""""""""""""""""""""""""""
@@ -219,3 +231,6 @@ omap / <Plug>(easymotion-tn)
 
 " Turn on EasyMotion case insensitive feature
 let g:EasyMotion_smartcase = 1
+
+" Use the local tag file
+set tags=./tags;
