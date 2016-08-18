@@ -1,13 +1,13 @@
 [user]
-	email = chrischoy208@gmail.com
-	name = Christopher B. Choy
+    email = chrischoy@ai.stanford.edu
+    name = Christopher B. Choy
 [push]
-	default = simple
+    default = simple
 [merge]
-	tool = nvimdiff
+    tool = nvimdiff
 [alias]
-	tree = log --graph --decorate --pretty=oneline --abbrev-commit
-  d = difftool
+    tree = log --graph --decorate --pretty=oneline --abbrev-commit
+    d = difftool
 [difftool]
     prompt = true
 [diff]
