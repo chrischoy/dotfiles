@@ -1,6 +1,6 @@
-# Configuration
+# Configurations
 
-Personal configuration files for [<img src="https://neovim.io/images/logo@2x.png">](https://neovim.io) + [<img src="https://tmux.github.io/logo.png">](https://tmux.github.io)
+Personal configuration files for [<img src="https://neovim.io/images/logo@2x.png" height="20em">](https://neovim.io) and [<img src="https://tmux.github.io/logo.png" height="20em">](https://tmux.github.io)
 
 ## Installation
 
