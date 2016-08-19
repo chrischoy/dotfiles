@@ -1,3 +1,6 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim Plugins
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Add plugins to &runtimepath
 call plug#begin()
 
@@ -27,8 +30,8 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Tmux navigator
 Plug 'christoomey/vim-tmux-navigator'
 
-" Split window file browser
-Plug 'scrooloose/nerdtree'
+" Nerdtree git plugin
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Quick file browser
 Plug 'ctrlpvim/ctrlp.vim'
@@ -36,9 +39,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 " More colorschemes
 Plug 'altercation/vim-colors-solarized'
 Plug 'flazz/vim-colorschemes'
-
-" File viewer
-" Plug 'altercation/vim-colors-solarized'
 
 " Git integration
 Plug 'tpope/vim-fugitive'
@@ -74,7 +74,7 @@ Plug 'godlygeek/tabular'
 Plug 'xolox/vim-misc'
 
 " Tag generation
-Plug 'xolox/vim-easytags'
+" Plug 'xolox/vim-easytags'
 
 " Grammar check
 Plug 'vim-scripts/LanguageTool'
@@ -83,13 +83,13 @@ Plug 'vim-scripts/LanguageTool'
 Plug 'edkolev/tmuxline.vim'
 
 " Latex
-Plug 'vim-latex/vim-latex'
+" Plug 'vim-latex/vim-latex'
 
 " indentLine
 Plug 'Yggdroot/indentLine'
 
 " Realtime collaborative editing
-Plug 'floobits/floobits-neovim'
+" Plugin 'floobits/floobits-neovim'
 
 " Vim-easymotion
 Plug 'easymotion/vim-easymotion'
@@ -102,45 +102,13 @@ Plug 'mindriot101/vim-yapf'
 
 call plug#end()
 
-"""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Visual setting
-"""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " colorscheme zenburn  " very comfortable font colors
 " colorscheme molokai  " very strong font colors
-colorscheme badwolf
+colorscheme Tomorrow-Night-Eighties
 let g:airline_theme='dark'
-
-"""""""""""""""""""""""""""""""""""
-" Keymapping
-"""""""""""""""""""""""""""""""""""
-let mapleader=","
-
-" Nerdtree
-let NERDTreeShowHidden=1
-nnoremap <C-e> :NERDTreeToggle<CR>
-nnoremap <Leader>u :UndotreeToggle<cr>
-" Stupid work around
-" https://github.com/neovim/neovim/issues/2048#issuecomment-78534227
-if has('nvim')
-    nmap <BS> :TmuxNavigateLeft<CR>
-endif
-
-"""""""""""""""""""""""""""""""""""
-" Editor setting
-"""""""""""""""""""""""""""""""""""
-set clipboard=unnamedplus
-
-" set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
-set listchars=tab:>·,trail:•,extends:>,precedes:<
-set list
-
-" Tab to spaces
-set tabstop=4
-set shiftwidth=4
-set expandtab
-
-" Switch buffers in vim without saving to a currently modified file
-set hidden
 
 " Set 100 line limit a colorcolumn
 if exists('+colorcolumn')
@@ -157,53 +125,23 @@ augroup CursorLine
   au WinLeave,TabLeave,FocusLost,CmdwinLeave * setlocal nocursorline
 augroup END
 
-" https://github.com/neovim/neovim/issues/2093
-set ttimeout
-set ttimeoutlen=0
 
-" Undo tree persistent
-let vimDir = '$HOME/.vim'
-let &runtimepath.=','.vimDir
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Keymapping
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let mapleader=","
 
-" Keep undo history across sessions by storing it in a file
-if has('persistent_undo')
-    let myUndoDir = expand(vimDir . '/undodir')
-    " Create dirs
-    call system('mkdir -p ' . vimDir)
-    call system('mkdir -p ' . myUndoDir)
-    let &undodir = myUndoDir
-    set undofile
+"""""""""""""""""""""""""""""""""""
+" Nerdtree
+"""""""""""""""""""""""""""""""""""
+let NERDTreeShowHidden=1
+nnoremap <C-e> :NERDTreeToggle<CR>
+nnoremap <Leader>u :UndotreeToggle<cr>
+" Stupid work around
+" https://github.com/neovim/neovim/issues/2048#issuecomment-78534227
+if has('nvim')
+    nmap <BS> :TmuxNavigateLeft<CR>
 endif
-
-" Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-
-" Set python interpreter
-let g:python_host_prog = '/usr/bin/python'
-
-" Set python3 interpreter
-let g:python3_host_prog = '/usr/bin/python3'
-
-"""""""""""""""""""""""""""""""""""
-" Pymode setting
-"""""""""""""""""""""""""""""""""""
-" Python 3 syntax check
-" let g:pymode_python = 'python3'
-let g:pymode_lint_ignore = "E501"
-" let g:pymode_lint_sort = ['EE', 'WW', 'CC', 'II']
-
-" vim-latex setting
-let g:tex_flavor='latex'
-let g:Tex_CompileRule_pdf='pdflatex --synctex=-1 -src-specials -interaction=nonstopmode -file-line-error-style $*'
-let g:Tex_DefaultTargetFormat='pdf'
-let g:Tex_MultipleCompileFormats='pdf'
-let g:Tex_ViewRule_pdf='okular'
-
-" Transparent background
-" highlight NonText ctermbg=none
-" highlight Normal ctermbg=none
-
 
 """""""""""""""""""""""""""""""""""
 " Easymotion setting
@@ -229,8 +167,82 @@ omap / <Plug>(easymotion-tn)
 " map  n <Plug>(easymotion-next)
 " map  N <Plug>(easymotion-prev)
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Editor setting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Default clipboard buffer
+set clipboard=unnamedplus
+
+" set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+set listchars=tab:>·,trail:•,extends:>,precedes:<
+set list
+
+" Tab to spaces
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+" Switch buffers in vim without saving to a currently modified file
+set hidden
+
+" https://github.com/neovim/neovim/issues/2093
+set ttimeout
+set ttimeoutlen=0
+
+" Local tag file
+set tags=./tags;
+
+" Undo tree persistent
+let vimDir = '$HOME/.vim'
+let &runtimepath.=','.vimDir
+
+" Keep undo history across sessions by storing it in a file
+if has('persistent_undo')
+    let myUndoDir = expand(vimDir . '/undodir')
+    " Create dirs
+    call system('mkdir -p ' . vimDir)
+    call system('mkdir -p ' . myUndoDir)
+    let &undodir = myUndoDir
+    set undofile
+endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin specific setting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+
+" Set python interpreter
+let g:python_host_prog = '/home/ma/cchoy/anaconda/bin/python'
+
+" Set python3 interpreter
+" let g:python3_host_prog = '/usr/bin/python3'
+
+" vim-latex setting
+let g:tex_flavor='latex'
+let g:Tex_CompileRule_pdf='pdflatex --synctex=-1 -src-specials -interaction=nonstopmode -file-line-error-style $*'
+let g:Tex_DefaultTargetFormat='pdf'
+let g:Tex_MultipleCompileFormats='pdf'
+let g:Tex_ViewRule_pdf='okular'
+
 " Turn on EasyMotion case insensitive feature
 let g:EasyMotion_smartcase = 1
 
-" Use the local tag file
-set tags=./tags;
+" Yapf keymap
+nnoremap <leader>y :Yapf()
+
+"""""""""""""""""""""""""""""""""""
+" NerdTree Git
+"""""""""""""""""""""""""""""""""""
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ "Unknown"   : "?"
+    \ }
