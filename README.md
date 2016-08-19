@@ -9,7 +9,3 @@ For fresh installation, use [https://github.com/chrischoy/env-setting](https://g
 Otherwise,
 
 - Download and install powerline fonts from [here](https://github.com/powerline/fonts)
-
-## Remove key mapping for <C-J> in `path/to/plugins/vim-latex/plugin/imaps.vim`
-
-find <C-J> mappings and comment out

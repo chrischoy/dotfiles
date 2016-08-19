@@ -83,7 +83,7 @@ Plug 'vim-scripts/LanguageTool'
 Plug 'edkolev/tmuxline.vim'
 
 " Latex
-" Plug 'vim-latex/vim-latex'
+Plug 'vim-latex/vim-latex'
 
 " indentLine
 Plug 'Yggdroot/indentLine'
@@ -167,6 +167,9 @@ omap / <Plug>(easymotion-tn)
 " map  n <Plug>(easymotion-next)
 " map  N <Plug>(easymotion-prev)
 
+" Dummy vim-latex keymapping
+map <Leader>a <Plug>IMAP_JumpForward<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Editor setting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -228,9 +231,6 @@ let g:Tex_ViewRule_pdf='okular'
 
 " Turn on EasyMotion case insensitive feature
 let g:EasyMotion_smartcase = 1
-
-" Yapf keymap
-nnoremap <leader>y :Yapf()
 
 """""""""""""""""""""""""""""""""""
 " NerdTree Git
