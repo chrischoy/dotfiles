@@ -97,8 +97,13 @@ Plug 'easymotion/vim-easymotion'
 " Ack
 Plug 'mileszs/ack.vim'
 
-" Yapf
-Plug 'mindriot101/vim-yapf'
+" Add maktaba and codefmt to the runtimepath.
+" (The latter must be installed before it can be used.)
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+" Also add Glaive, which is used to configure codefmt's maktaba flags. See
+" `:help :Glaive` for usage.
+Plug 'google/vim-glaive'
 
 call plug#end()
 
@@ -107,7 +112,9 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " colorscheme zenburn  " very comfortable font colors
 " colorscheme molokai  " very strong font colors
-colorscheme Tomorrow-Night-Eighties
+" Chasing_Logic, 1989, Revolution. blackboard, 256-grayvim, Benokai,
+" colorsbox-greenish
+colorscheme Benokai
 let g:airline_theme='dark'
 
 " Set 100 line limit a colorcolumn
