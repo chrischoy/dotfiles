@@ -162,6 +162,10 @@ map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 map <Leader>h <Plug>(easymotion-linebackward)
 
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+
 let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 
 " Search
@@ -239,6 +243,9 @@ let g:Tex_ViewRule_pdf='okular'
 " Turn on EasyMotion case insensitive feature
 let g:EasyMotion_smartcase = 1
 
+" LaTeX conceallevel
+set conceallevel=0
+
 """""""""""""""""""""""""""""""""""
 " NerdTree Git
 """""""""""""""""""""""""""""""""""
@@ -253,3 +260,6 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Clean"     : "✔︎",
     \ "Unknown"   : "?"
     \ }
+
+" Spelling
+set spell spelllang=en_us
