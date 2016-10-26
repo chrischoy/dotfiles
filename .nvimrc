@@ -181,6 +181,9 @@ omap / <Plug>(easymotion-tn)
 " Dummy vim-latex keymapping
 map <Leader>a <Plug>IMAP_JumpForward<CR>
 
+" Remove all Ctrl-M
+map <Leader>m :%s/\r//g<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Editor setting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
