@@ -153,6 +153,9 @@ augroup END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader=","
 
+nnoremap <F5> "=strftime("%Y-%m-%dT%T%z")<CR>P
+inoremap <F5> <C-R>=strftime("%Y-%m-%dT%T%z")<CR>
+
 """""""""""""""""""""""""""""""""""
 " Nerdtree
 """""""""""""""""""""""""""""""""""
@@ -246,7 +249,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
 " Set python interpreter
-let g:python_host_prog = '/home/ma/cchoy/anaconda/bin/python'
+let g:python_host_prog = '/usr/bin/python'
 
 " Set python3 interpreter
 " let g:python3_host_prog = '/usr/bin/python3'
