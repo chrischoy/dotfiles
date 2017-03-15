@@ -21,6 +21,9 @@ Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 " Using a non-master branch
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
+" YCM
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+
 " Plugin options
 Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 
@@ -36,6 +39,9 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " Quick file browser
 Plug 'ctrlpvim/ctrlp.vim'
 
+" Unite
+Plug 'Shougo/unite.vim'
+
 " More colorschemes
 Plug 'altercation/vim-colors-solarized'
 Plug 'flazz/vim-colorschemes'
@@ -47,7 +53,13 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " Pymode
-Plug 'klen/python-mode'
+" Plug 'klen/python-mode'
+
+" Syntax checker
+Plug 'scrooloose/syntastic'
+
+" Vim PEP8 check
+Plug 'nvie/vim-flake8'
 
 " Airline
 Plug 'bling/vim-airline'
@@ -77,7 +89,7 @@ Plug 'xolox/vim-misc'
 " Plug 'xolox/vim-easytags'
 
 " Grammar check
-Plug 'vim-scripts/LanguageTool'
+Plug 'rhysd/vim-grammarous'
 
 " Tmux line
 Plug 'edkolev/tmuxline.vim'
@@ -114,8 +126,11 @@ call plug#end()
 " colorscheme molokai  " very strong font colors
 " Chasing_Logic, 1989, Revolution. blackboard, 256-grayvim, Benokai,
 " colorsbox-greenish
-colorscheme Benokai
+colorscheme Tomorrow
 let g:airline_theme='dark'
+
+" set the line number
+set nu
 
 " Set 100 line limit a colorcolumn
 if exists('+colorcolumn')
@@ -249,6 +264,16 @@ let g:EasyMotion_smartcase = 1
 " LaTeX conceallevel
 set conceallevel=0
 
+" Pymode
+" let g:pymode_lint_ignore = "E501, W404"
+
+" YCM
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" Syntastic 80 character line
+let g:syntastic_python_flake8_args='--ignore=E501'
+
 """""""""""""""""""""""""""""""""""
 " NerdTree Git
 """""""""""""""""""""""""""""""""""
@@ -266,3 +291,6 @@ let g:NERDTreeIndicatorMapCustom = {
 
 " Spelling
 set spell spelllang=en_us
+
+" Local exrc
+set exrc
