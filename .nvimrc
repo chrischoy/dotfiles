@@ -52,14 +52,8 @@ Plug 'tpope/vim-fugitive'
 " Shows a git diff in the 'gutter' (sign column)
 Plug 'airblade/vim-gitgutter'
 
-" Pymode
-" Plug 'klen/python-mode'
-
 " Syntax checker
 Plug 'scrooloose/syntastic'
-
-" Vim PEP8 check
-Plug 'nvie/vim-flake8'
 
 " Airline
 Plug 'bling/vim-airline'
@@ -87,6 +81,9 @@ Plug 'xolox/vim-misc'
 
 " Tag generation
 " Plug 'xolox/vim-easytags'
+
+" Grammar check
+Plug 'vim-scripts/LanguageTool'
 
 " Grammar check
 Plug 'rhysd/vim-grammarous'
@@ -128,9 +125,6 @@ call plug#end()
 " colorsbox-greenish
 colorscheme Tomorrow
 let g:airline_theme='dark'
-
-" set the line number
-set nu
 
 " Set 100 line limit a colorcolumn
 if exists('+colorcolumn')
@@ -213,9 +207,13 @@ set listchars=tab:>·,trail:•,extends:>,precedes:<
 set list
 
 " Tab to spaces
+set number
+set smartindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
+
+autocmd FileType python setlocal tabstop=2 shiftwidth=2
 
 " Switch buffers in vim without saving to a currently modified file
 set hidden
@@ -267,15 +265,20 @@ let g:EasyMotion_smartcase = 1
 " LaTeX conceallevel
 set conceallevel=0
 
-" Pymode
-" let g:pymode_lint_ignore = "E501, W404"
-
 " YCM
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " Syntastic 80 character line
-let g:syntastic_python_flake8_args='--ignore=E501'
+" If the syntastic doesn't report errors, install flake8
+let g:syntastic_python_checkers = ['flake8']
+" E501: 80 line, E111, E114: indentation multiple of four
+let g:syntastic_python_flake8_args='--ignore=E501,E111,E114'
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_loc_list_height=3
 
 """""""""""""""""""""""""""""""""""
 " NerdTree Git
@@ -297,3 +300,19 @@ set spell spelllang=en_us
 
 " Local exrc
 set exrc
+
+"""""""""""""""""""""""""""""""""""
+" Google/vim-codefmt
+"""""""""""""""""""""""""""""""""""
+" If you want to format your code automatically, uncomment the following
+" augroup autoformat_settings
+"   autocmd FileType bzl AutoFormatBuffer buildifier
+"   autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+"   autocmd FileType dart AutoFormatBuffer dartfmt
+"   autocmd FileType go AutoFormatBuffer gofmt
+"   autocmd FileType gn AutoFormatBuffer gn
+"   autocmd FileType html,css,json AutoFormatBuffer js-beautify
+"   autocmd FileType java AutoFormatBuffer google-java-format
+"   autocmd FileType python AutoFormatBuffer yapf
+"   " as an alternative: autocmd FileType python AutoFormatBuffer autopep8
+" augroup END
