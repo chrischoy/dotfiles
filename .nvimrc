@@ -2,52 +2,34 @@
 " Vim Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Add plugins to &runtimepath
-call plug#begin()
+call plug#begin('~/.vim/plugged')
 
-" Make sure you use single quotes
-Plug 'junegunn/seoul256.vim'
+" Vim default setting
+Plug 'tpope/vim-sensible'
+" Git integration
+Plug 'tpope/vim-fugitive'
+
 Plug 'junegunn/vim-easy-align'
+" fzf finder for files, tags, commits, Ag, etc.
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
-" Group dependencies, vim-snippets depends on ultisnips
-" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
-" On-demand loading
+" Nerdtree
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-
-" Using git URL
-Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-
-" Using a non-master branch
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
 " YCM
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
-" Plugin options
-Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-
-" Plugin outside ~/.vim/plugged with post-update hook
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
 " Tmux navigator
 Plug 'christoomey/vim-tmux-navigator'
 
-" Nerdtree git plugin
-Plug 'Xuyuanp/nerdtree-git-plugin'
-
-" Quick file browser
-Plug 'ctrlpvim/ctrlp.vim'
-
-" Unite
-Plug 'Shougo/unite.vim'
-
 " More colorschemes
+Plug 'junegunn/seoul256.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'flazz/vim-colorschemes'
-
-" Git integration
-Plug 'tpope/vim-fugitive'
 
 " Shows a git diff in the 'gutter' (sign column)
 Plug 'airblade/vim-gitgutter'
@@ -67,51 +49,26 @@ Plug 'mbbill/undotree'
 " Multiple cursors
 Plug 'terryma/vim-multiple-cursors'
 
-" Comment
-Plug 'scrooloose/nerdcommenter'
-
 " Surround parantheses, bracket, quotes, tags
 Plug 'tpope/vim-surround'
 
 " Align lines nicely
 Plug 'godlygeek/tabular'
 
-" requirement for the easytag
-Plug 'xolox/vim-misc'
-
-" Tag generation
-" Plug 'xolox/vim-easytags'
-
-" Grammar check
-Plug 'vim-scripts/LanguageTool'
-
 " Grammar check
 Plug 'rhysd/vim-grammarous'
-
-" Tmux line
-Plug 'edkolev/tmuxline.vim'
 
 " Latex
 Plug 'vim-latex/vim-latex'
 
-" indentLine
-Plug 'Yggdroot/indentLine'
-
-" Realtime collaborative editing
-" Plugin 'floobits/floobits-neovim'
-
 " Vim-easymotion
 Plug 'easymotion/vim-easymotion'
-
-" Ack
-Plug 'mileszs/ack.vim'
 
 " Add maktaba and codefmt to the runtimepath.
 " (The latter must be installed before it can be used.)
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
-" Also add Glaive, which is used to configure codefmt's maktaba flags. See
-" `:help :Glaive` for usage.
+" Also add Glaive, which is used to configure codefmt's maktaba flags.
 Plug 'google/vim-glaive'
 
 call plug#end()
@@ -123,7 +80,7 @@ call plug#end()
 " colorscheme molokai  " very strong font colors
 " Chasing_Logic, 1989, Revolution. blackboard, 256-grayvim, Benokai,
 " colorsbox-greenish
-colorscheme Tomorrow
+colorscheme Monokai
 let g:airline_theme='dark'
 
 " Set 100 line limit a colorcolumn
@@ -206,13 +163,10 @@ set clipboard=unnamedplus
 set listchars=tab:>·,trail:•,extends:>,precedes:<
 set list
 
-" Tab to spaces
+" Set number column
 set number
-set smartindent
-set tabstop=4
-set shiftwidth=4
-set expandtab
 
+" Use 2 spaces for python files
 autocmd FileType python setlocal tabstop=2 shiftwidth=2
 
 " Switch buffers in vim without saving to a currently modified file
@@ -221,9 +175,6 @@ set hidden
 " https://github.com/neovim/neovim/issues/2093
 set ttimeout
 set ttimeoutlen=0
-
-" Local tag file
-set tags=./tags;
 
 " Undo tree persistent
 let vimDir = '$HOME/.vim'
@@ -247,7 +198,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
 " Set python interpreter
-let g:python_host_prog = '/usr/bin/python'
+" let g:python_host_prog = '/usr/bin/python'
 
 " Set python3 interpreter
 " let g:python3_host_prog = '/usr/bin/python3'
@@ -262,7 +213,7 @@ let g:Tex_ViewRule_pdf='okular'
 " Turn on EasyMotion case insensitive feature
 let g:EasyMotion_smartcase = 1
 
-" LaTeX conceallevel
+" No conceal
 set conceallevel=0
 
 " YCM
@@ -300,19 +251,4 @@ set spell spelllang=en_us
 
 " Local exrc
 set exrc
-
-"""""""""""""""""""""""""""""""""""
-" Google/vim-codefmt
-"""""""""""""""""""""""""""""""""""
-" If you want to format your code automatically, uncomment the following
-" augroup autoformat_settings
-"   autocmd FileType bzl AutoFormatBuffer buildifier
-"   autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
-"   autocmd FileType dart AutoFormatBuffer dartfmt
-"   autocmd FileType go AutoFormatBuffer gofmt
-"   autocmd FileType gn AutoFormatBuffer gn
-"   autocmd FileType html,css,json AutoFormatBuffer js-beautify
-"   autocmd FileType java AutoFormatBuffer google-java-format
-"   autocmd FileType python AutoFormatBuffer yapf
-"   " as an alternative: autocmd FileType python AutoFormatBuffer autopep8
-" augroup END
+set secure
