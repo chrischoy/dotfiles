@@ -23,6 +23,11 @@ Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 " YCM
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
+" Track the engine.
+Plug 'SirVer/ultisnips'
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
+
 " Tmux navigator
 Plug 'christoomey/vim-tmux-navigator'
 
@@ -60,6 +65,9 @@ Plug 'rhysd/vim-grammarous'
 
 " Latex
 Plug 'vim-latex/vim-latex'
+
+" indentLine
+Plug 'Yggdroot/indentLine'
 
 " Vim-easymotion
 Plug 'easymotion/vim-easymotion'
@@ -216,8 +224,18 @@ let g:EasyMotion_smartcase = 1
 " No conceal
 set conceallevel=0
 
+"""""""""""""""""""""""""""""""""""
 " YCM
-let g:ycm_autoclose_preview_window_after_completion=1
+"""""""""""""""""""""""""""""""""""
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_autoclose_preview_window_after_completion = 0
+let g:ycm_autoclose_preview_window_after_insertion = 0
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " Syntastic 80 character line
@@ -245,6 +263,17 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Clean"     : "✔︎",
     \ "Unknown"   : "?"
     \ }
+
+"""""""""""""""""""""""""""""""""""
+" Ultisnips
+"""""""""""""""""""""""""""""""""""
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-a>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
 " Spelling
 set spell spelllang=en_us
