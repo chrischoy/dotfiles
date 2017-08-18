@@ -20,8 +20,8 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
-" YCM
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+" jedi
+Plug 'davidhalter/jedi-vim'
 
 " Track the engine.
 Plug 'SirVer/ultisnips'
@@ -184,6 +184,20 @@ set hidden
 set ttimeout
 set ttimeoutlen=0
 
+" Spelling
+set spell spelllang=en_us
+
+" Local exrc
+set exrc
+set secure
+
+" Remove increment/decrement keymapping
+" map <c-x> <Nop>
+" map <c-a> <Nop>
+
+" No conceal
+set conceallevel=0
+
 " Undo tree persistent
 let vimDir = '$HOME/.vim'
 let &runtimepath.=','.vimDir
@@ -205,12 +219,6 @@ endif
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
-" Set python interpreter
-" let g:python_host_prog = '/usr/bin/python'
-
-" Set python3 interpreter
-" let g:python3_host_prog = '/usr/bin/python3'
-
 " vim-latex setting
 let g:tex_flavor='latex'
 let g:Tex_CompileRule_pdf='pdflatex --synctex=-1 -src-specials -interaction=nonstopmode -file-line-error-style $*'
@@ -221,22 +229,9 @@ let g:Tex_ViewRule_pdf='okular'
 " Turn on EasyMotion case insensitive feature
 let g:EasyMotion_smartcase = 1
 
-" No conceal
-set conceallevel=0
-
-"""""""""""""""""""""""""""""""""""
-" YCM
-"""""""""""""""""""""""""""""""""""
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_autoclose_preview_window_after_completion = 0
-let g:ycm_autoclose_preview_window_after_insertion = 0
-
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+"¦, ┆, │, ⎸, ▏
+let g:indentLine_char = '│'
 let g:SuperTabDefaultCompletionType = '<C-n>'
-
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " Syntastic 80 character line
 " If the syntastic doesn't report errors, install flake8
@@ -248,6 +243,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height=3
+
+" let g:airline_powerline_fonts = 0
 
 """""""""""""""""""""""""""""""""""
 " NerdTree Git
@@ -274,10 +271,3 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
-
-" Spelling
-set spell spelllang=en_us
-
-" Local exrc
-set exrc
-set secure
