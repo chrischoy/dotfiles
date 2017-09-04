@@ -56,15 +56,13 @@ Plug 'terryma/vim-multiple-cursors'
 
 " Surround parantheses, bracket, quotes, tags
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 
 " Align lines nicely
 Plug 'godlygeek/tabular'
 
 " Grammar check
 Plug 'rhysd/vim-grammarous'
-
-" Latex
-Plug 'vim-latex/vim-latex'
 
 " indentLine
 Plug 'Yggdroot/indentLine'
@@ -132,7 +130,7 @@ endif
 """""""""""""""""""""""""""""""""""
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
 " `s{char}{char}{label}`
-nmap s <Plug>(easymotion-overwin-f2)
+" nmap s <Plug>(easymotion-overwin-f2)
 
 map <Leader>l <Plug>(easymotion-lineforward)
 map <Leader>j <Plug>(easymotion-j)
@@ -165,7 +163,7 @@ map <Leader>m :%s/\r//g<CR>
 " Editor setting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Default clipboard buffer
-set clipboard=unnamedplus
+set clipboard^=unnamed,unnamedplus
 
 " set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 set listchars=tab:>·,trail:•,extends:>,precedes:<
@@ -219,13 +217,6 @@ endif
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
-" vim-latex setting
-let g:tex_flavor='latex'
-let g:Tex_CompileRule_pdf='pdflatex --synctex=-1 -src-specials -interaction=nonstopmode -file-line-error-style $*'
-let g:Tex_DefaultTargetFormat='pdf'
-let g:Tex_MultipleCompileFormats='pdf'
-let g:Tex_ViewRule_pdf='okular'
-
 " Turn on EasyMotion case insensitive feature
 let g:EasyMotion_smartcase = 1
 
@@ -271,3 +262,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
+" Tex compilation
+autocmd FileType tex map <buffer> <Leader>ll :!pdflatex -file-line-error-style % \| grep ":[0-9]*:"<CR>
