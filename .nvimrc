@@ -263,5 +263,14 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
+"""""""""""""""""""""""""""""""""""
+" Git gutter setting
+"""""""""""""""""""""""""""""""""""
+let g:gitgutter_map_keys = 0
+nmap <leader>g? <Plug>GitGutterPreviewHunk
+nmap <leader>gp <Plug>GitGutterPrevHunk
+nmap <leader>gn <Plug>GitGutterNextHunk
+nmap <leader>gu <Plug>GitGutterUndoHunk
+
 " Tex compilation
 autocmd FileType tex map <buffer> <Leader>ll :!pdflatex -file-line-error-style % \| grep ":[0-9]*:"<CR>
