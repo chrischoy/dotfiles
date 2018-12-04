@@ -190,6 +190,7 @@ set exrc
 set secure
 
 " Mouse resize
+set ttymouse=xterm2
 set mouse=a
 
 " Remove increment/decrement keymapping
