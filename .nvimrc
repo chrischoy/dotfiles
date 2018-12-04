@@ -170,7 +170,7 @@ set listchars=tab:>·,trail:•,extends:>,precedes:<
 set list
 
 " Set number column
-set number
+set number relativenumber
 
 " Use 2 spaces for python files
 autocmd FileType python setlocal tabstop=2 shiftwidth=2
