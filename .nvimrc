@@ -189,6 +189,9 @@ set spell spelllang=en_us
 set exrc
 set secure
 
+" Mouse resize
+set mouse=a
+
 " Remove increment/decrement keymapping
 " map <c-x> <Nop>
 " map <c-a> <Nop>
