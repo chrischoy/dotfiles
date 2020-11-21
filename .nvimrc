@@ -284,3 +284,6 @@ nmap <leader>gu <Plug>GitGutterUndoHunk
 
 " Tex compilation
 autocmd FileType tex map <buffer> <Leader>ll :!pdflatex -file-line-error-style % \| grep ":[0-9]*:"<CR>
+
+" turn off esc sound
+set visualbell
